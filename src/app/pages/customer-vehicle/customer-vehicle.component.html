@@ -1,0 +1,26 @@
+<h2>List of Customer-Vehicles:</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>ID: </th>
+            <th>Created by: </th>
+            <th>Date created: </th>
+            <th>Vehicle: </th>
+            <th>Customer: </th>
+            <th> </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customerVehicle of customersVehicles; let i = index">
+                <td>{{ customerVehicle.id }}</td>
+                <td>{{ customerVehicle.created_by }}</td>
+                <td>{{ customerVehicle.date_created }}</td>
+                <td>{{ customerVehicle.id_vehicle }}</td>
+                <td>{{ customerVehicle.id_customer }}</td>
+                <td>
+                    <button (click)="select(i)">Edit</button><br/>
+                    <button (click)="delete(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

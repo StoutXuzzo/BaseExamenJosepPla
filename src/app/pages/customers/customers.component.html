@@ -1,0 +1,84 @@
+<h2>List of Customers: </h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>ID: </th>
+            <th>Created by: </th>
+            <th>Date entered: </th>
+            <th>First name: </th>
+            <th>Last name: </th>
+            <th>Phone: </th>
+            <th>Birthdate: </th>
+            <th>Addres: </th>
+            <th>Description: </th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers; let i = index">
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.created_by }}</td>
+                <td>{{ customer.date_entered }}</td>
+                <td>{{ customer.first_name }}</td>
+                <td>{{ customer.last_name }}</td>
+                <td>{{ customer.phone }}</td>
+                <td>{{ customer.birthdate }}</td>
+                <td>{{ customer.address }}</td>
+                <td>{{ customer.description }}</td>
+                <td>
+                    <button (click)="select(i)">Edit</button><br/>
+                    <button (click)="delete(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2>Selected Customer:</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th></th>
+            <th></th>
+        </thead>
+        <tr>
+            <td>ID: </td>
+            <td><input type="number" [(ngModel)]="selectedCustomer.id" disabled></td>
+        </tr>
+        <tr>
+            <td>Created by: </td>
+            <td><input type="number" [(ngModel)]="selectedCustomer.created_by" disabled></td>
+        </tr>
+        <tr>
+            <td>Date entered: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.date_entered" disabled></td>
+        </tr>
+        <tr>
+            <td>First name: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.first_name"></td>
+        </tr>
+        <tr>
+            <td>Last name: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.last_name"></td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.phone"></td>
+        </tr>
+        <tr>
+            <td>Birthdate: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.birthdate"></td>
+        </tr>
+        <tr>
+            <td>Address: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.address"></td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td><input type="text" [(ngModel)]="selectedCustomer.description"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button (click)="insert()">Insert</button> &nbsp;  <button (click)="update()">Update</button></td>
+        </tr>
+    </table>
+</div>
+<br/>
