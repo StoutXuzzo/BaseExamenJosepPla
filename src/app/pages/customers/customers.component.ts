@@ -49,6 +49,6 @@ export class CustomersComponent implements OnInit {
     if (!confirm("Delete customer " + this.customers[i].first_name + " " + this.customers[i].last_name + "?"))
       return;
 
-    this.customerService.delete(this.customers[i].id)
+    this.customerService.delete(this.customers[i].id);
   }
 }
