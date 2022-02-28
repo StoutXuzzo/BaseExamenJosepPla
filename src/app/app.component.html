@@ -1,8 +1,13 @@
-<div class="tab">
-    <a routerLink="."><button>Home</button></a>
-    <a routerLink="/customers"><button>Customers</button></a>
-    <a routerLink="/vehicles"><button>Vehicles</button></a>
-    <a routerLink="/customervehicle"><button>Customer-Vehicle</button></a>
+<div>
+    <table class="fl-table">
+        <thead>
+            <th><a [routerLink]="['.']">Home</a></th>
+            <th><a [routerLink]="['/customers']" >Customers</a></th> <!--(CusVehMsj)="reciveInfo($event)"-->
+            <th><a [routerLink]="['/vehicles']">Vehicles</a></th>
+            <th><a [routerLink]="['/customervehicle']">Customer-Vehicle</a></th>
+            <th><a [routerLink]="['/about', {mode: msj}]">About</a></th>
+        </thead>
+    </table>
 </div>
 
 <router-outlet></router-outlet>

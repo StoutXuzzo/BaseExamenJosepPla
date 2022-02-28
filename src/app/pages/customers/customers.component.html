@@ -13,8 +13,8 @@
             <th>Description: </th>
             <th></th>
         </thead>
-        <tbody>
-            <tr *ngFor="let customer of customers; let i = index">
+        <tbody *ngFor="let customer of customers; let i = index">
+            <tr *ngIf="true">
                 <td>{{ customer.id }}</td>
                 <td>{{ customer.created_by }}</td>
                 <td>{{ customer.date_entered }}</td>

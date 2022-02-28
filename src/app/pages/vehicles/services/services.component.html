@@ -1,0 +1,30 @@
+<h2>List of Services:</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+            <th>ID: </th>
+            <th>Created by: </th>
+            <th>Date entered: </th>
+            <th>Name: </th>
+            <th>Description: </th>
+            <th>Status: </th>
+            <th>Vehicle: </th>
+            <th></th>
+        </thead>
+        <tbody *ngFor="let service of services; let i = index">
+
+            <tr *ngIf="filterS == service.id_vehicle">
+                <td>{{ service.id }}</td>
+                <td>{{ service.created_by }}</td>
+                <td>{{ service.date_created }}</td>
+                <td>{{ service.name }}</td>
+                <td>{{ service.description }}</td>
+                <td>{{ service.status }}</td>
+                <td>{{ service.id_vehicle }}</td>
+                <td>
+                    <button (click)="delete(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

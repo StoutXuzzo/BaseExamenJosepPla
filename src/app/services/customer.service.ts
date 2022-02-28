@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer, copyCustomer, jsonToCustomer } from '../models/customer.model';
 import { Subject } from 'rxjs';
+import { Vehicle } from '../models/vehicle.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,24 @@ export class CustomerService {
      return this._customers.asObservable();
    }
 
+   getCustomer(id: number): Customer{
+     for (let i = 0; i < this.customers.length; i++){
+      if (this.customers[i].id == id)
+        return copyCustomer(this.customers[i]);
+     }
+     return new Customer();
+   }
+
+   getOne(id: number){
+    return this.http.get(this.url+"/"+id);
+   }
+
    insert(customer : Customer){
     let cus = copyCustomer(customer);
 
     cus.id = 0;
-    cus.date_entered = "2022-01-01";
+    let msj = new Date().toLocaleDateString().split("/");
+    cus.date_entered = msj[2] + "-" + ((msj[1].length == 1)?"0":"") + msj[1] + "-" + ((msj[0].length == 1)?"0":"") + msj[0];
     cus.created_by = 1;
     
     const cabecera=new HttpHeaders({"Content-Type": "application/json;charset=utf-8"});

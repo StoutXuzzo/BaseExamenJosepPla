@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BaseExamenJosepPla';
+
+  msj:string = "";
+
+  reciveInfo(msjCV: string){
+    this.msj = msjCV;
+  }
 }

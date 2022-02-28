@@ -26,12 +26,13 @@ export class CustomerVehicleService {
      setTimeout(() => { this._customersVehicles.next(this.customersVehicles); }, 15);
      return this._customersVehicles.asObservable();
    }
-
+   
    insert(customerVehicle: CustomerVehicle){
     let cusVeh = copyCustomerVehicle(customerVehicle);
 
     cusVeh.id = 0;
-    cusVeh.date_created = "2022-01-01";
+    let msj = new Date().toLocaleDateString().split("/");
+    cusVeh.date_created = msj[2] + "-" + ((msj[1].length == 1)?"0":"") + msj[1] + "-" + ((msj[0].length == 1)?"0":"") + msj[0];
     cusVeh.created_by = 1;
 
     const cabecera=new HttpHeaders({"Content-Type": "application/json;charset=utf-8"});

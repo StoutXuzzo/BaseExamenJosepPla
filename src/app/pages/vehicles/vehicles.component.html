@@ -13,9 +13,10 @@
             <th>Gas type: </th>
             <th>Description: </th>
             <th></th>
+            <!--<th><input type="text" [(ngModel)]="filter" ></th>-->
         </thead>
-        <tbody>
-            <tr *ngFor="let vehicle of vehicles; let i = index">
+        <tbody *ngFor="let vehicle of vehicles; let i = index">
+            <!--<tr *ngIf="filtrar(vehicle)">--><tr>
                 <td>{{ vehicle.id }}</td>
                 <td>{{ vehicle.created_by }}</td>
                 <td>{{ vehicle.date_created }}</td>
@@ -37,53 +38,60 @@
 <h2>Selected Vehicle: </h2>
 <div class="table-wrapper">
     <table class="fl-table">
-        <thead>
-            <th></th>
-            <th></th>
-        </thead>
         <tr>
-            <td>ID: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.id" disabled></td>
-        </tr>
-        <tr>
-            <td>Created by: </td>
-            <td><input type="number" [(ngModel)]="selectedVehicle.created_by" disabled></td>
-        </tr>
-        <tr>
-            <td>Date entered: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.date_created" disabled></td>
-        </tr>
-        <tr>
-            <td>Number: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_number" ></td>
-        </tr>
-        <tr>
-            <td>Brand: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_brand" ></td>
-        </tr>
-        <tr>
-            <td>Model: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_model" ></td>
-        </tr>
-        <tr>
-            <td>Color: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_color" ></td>
-        </tr>
-        <tr>
-            <td>Manufacturing date: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.date_manufacturing"></td>
-        </tr>
-        <tr>
-            <td>Gas type: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.type_gas" ></td>
-        </tr>
-        <tr>
-            <td>Description: </td>
-            <td><input type="text" [(ngModel)]="selectedVehicle.description"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button (click)="insert()">Insert</button> &nbsp;  <button (click)="update()">Update</button></td>
+            <td><app-services [filterS]="filterF"></app-services></td>
+            <td>
+                <table class="fl-table">
+                    <thead>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tr>
+                        <td>ID: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.id" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Created by: </td>
+                        <td><input type="number" [(ngModel)]="selectedVehicle.created_by" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Date entered: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.date_created" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Number: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_number" ></td>
+                    </tr>
+                    <tr>
+                        <td>Brand: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_brand" ></td>
+                    </tr>
+                    <tr>
+                        <td>Model: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_model" ></td>
+                    </tr>
+                    <tr>
+                        <td>Color: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.vehicle_color" ></td>
+                    </tr>
+                    <tr>
+                        <td>Manufacturing date: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.date_manufacturing"></td>
+                    </tr>
+                    <tr>
+                        <td>Gas type: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.type_gas" ></td>
+                    </tr>
+                    <tr>
+                        <td>Description: </td>
+                        <td><input type="text" [(ngModel)]="selectedVehicle.description"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button (click)="insert()">Insert</button> &nbsp;  <button (click)="update()">Update</button></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
 </div>

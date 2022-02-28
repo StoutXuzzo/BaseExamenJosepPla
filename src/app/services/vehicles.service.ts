@@ -22,6 +22,14 @@ export class VehiclesService {
     });
    }
 
+   getVehicle(id: number): Vehicle{
+     for (let i = 0; i < this.vehicles.length; i++){
+      if(this.vehicles[i].id == id)
+        return copyVehicle(this.vehicles[i]);
+     }
+     return new Vehicle();
+   }
+
    get(){
      setTimeout(() => { this._vehicles.next(this.vehicles); }, 15);
      return this._vehicles.asObservable();
@@ -31,7 +39,8 @@ export class VehiclesService {
     let veh = copyVehicle(vehicle);
 
     veh.id = 0;
-    veh.date_created = "2022-01-01";
+    let msj = new Date().toLocaleDateString().split("/");
+    veh.date_created = msj[2] + "-" + ((msj[1].length == 1)?"0":"") + msj[1] + "-" + ((msj[0].length == 1)?"0":"") + msj[0];
     veh.created_by = 1;
 
     const cabecera=new HttpHeaders({"Content-Type": "application/json;charset=utf-8"});

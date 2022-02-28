@@ -9,13 +9,13 @@
             <th>Customer: </th>
             <th> </th>
         </thead>
-        <tbody>
-            <tr *ngFor="let customerVehicle of customersVehicles; let i = index">
+        <tbody *ngFor="let customerVehicle of customersVehicles; let i = index">
+            <tr *ngIf="true">
                 <td>{{ customerVehicle.id }}</td>
                 <td>{{ customerVehicle.created_by }}</td>
                 <td>{{ customerVehicle.date_created }}</td>
-                <td>{{ customerVehicle.id_vehicle }}</td>
-                <td>{{ customerVehicle.id_customer }}</td>
+                <td>{{ customerVehicle.vehicle.vehicle_number }}</td>
+                <td>{{ customerVehicle.customer.first_name }}</td>
                 <td>
                     <button (click)="select(i)">Edit</button><br/>
                     <button (click)="delete(i)">Delete</button>
@@ -45,15 +45,30 @@
         </tr>
         <tr>
             <td>Vehicle: </td>
-            <td><input type="number" [(ngModel)]="selectedCustomerVehicle.id_vehicle" ></td>
+            <td>
+                <!--<input type="number" [(ngModel)]="selectedCustomerVehicle.id_vehicle" >-->
+                <select name="vehicles" id="vehicles" [(ngModel)]="selectedVehicle">
+                    <option value={{i}} *ngFor="let veh of vehicles; let i = index">
+                        {{veh.vehicle_number}}
+                    </option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Customer: </td>
-            <td><input type="number" [(ngModel)]="selectedCustomerVehicle.id_customer" ></td>
+            <!--<td><input type="number" [(ngModel)]="selectedCustomerVehicle.id_customer" ></td>-->
+            <td>
+                <select name="customer" id="customer" [(ngModel)]="selectedCustomer">
+                    <option value={{i}} *ngFor="let cus of customers; let i = index">
+                        {{cus.first_name}} {{cus.last_name}}
+                    </option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td></td>
             <td><button (click)="insert()">Insert</button> &nbsp;  <button (click)="update()">Update</button></td>
         </tr>
     </table>
+    <button type="button" (click)="sendInfo()">Add mensaje to the About view.</button>
 </div>
